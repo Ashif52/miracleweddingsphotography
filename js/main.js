@@ -37,7 +37,7 @@ class MiracleApp {
 
     let currentIndex = 0;
     let autoplayTimer = null;
-    const duration = 5500;
+    const duration = 3200; // Faster cinematic slideshow cadence
 
     const showSlide = (index) => {
       currentIndex = (index + slides.length) % slides.length;
@@ -46,22 +46,24 @@ class MiracleApp {
         slide.classList.toggle('active', i === currentIndex);
       });
 
-      indicators.forEach((indicator, i) => {
-        const isActive = i === currentIndex;
-        indicator.classList.toggle('active', isActive);
-        indicator.setAttribute('aria-current', isActive ? 'true' : 'false');
+      if (indicators && indicators.length > 0) {
+        indicators.forEach((indicator, i) => {
+          const isActive = i === currentIndex;
+          indicator.classList.toggle('active', isActive);
+          indicator.setAttribute('aria-current', isActive ? 'true' : 'false');
 
-        const bar = indicator.querySelector('.indicator-progress');
-        if (bar) {
-          bar.style.transition = 'none';
-          bar.style.width = '0%';
-          if (isActive) {
-            void bar.offsetWidth; // Force reflow
-            bar.style.transition = `width ${duration}ms linear`;
-            bar.style.width = '100%';
+          const bar = indicator.querySelector('.indicator-progress');
+          if (bar) {
+            bar.style.transition = 'none';
+            bar.style.width = '0%';
+            if (isActive) {
+              void bar.offsetWidth; // Force reflow
+              bar.style.transition = `width ${duration}ms linear`;
+              bar.style.width = '100%';
+            }
           }
-        }
-      });
+        });
+      }
 
       const currentSlide = slides[currentIndex];
       if (currentSlide && captionNum && captionTitle) {
@@ -110,12 +112,14 @@ class MiracleApp {
       });
     }
 
-    indicators.forEach((indicator, idx) => {
-      indicator.addEventListener('click', () => {
-        showSlide(idx);
-        resetAutoplay();
+    if (indicators && indicators.length > 0) {
+      indicators.forEach((indicator, idx) => {
+        indicator.addEventListener('click', () => {
+          showSlide(idx);
+          resetAutoplay();
+        });
       });
-    });
+    }
 
     const heroSection = document.getElementById('hero');
     if (heroSection) {
@@ -162,17 +166,57 @@ class MiracleApp {
     const header = document.querySelector('.site-header');
     if (!header) return;
 
-    // Check on initial load
-    const handleScroll = () => {
-      if (window.scrollY > 60) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const progressBar = document.getElementById('scroll-progress');
+
+    const updateHeader = () => {
+      const currentScrollY = window.scrollY;
+
+      // 1. Frosted glass elevated state
+      if (currentScrollY > 30) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
+
+      // 2. Hide on scroll down, reveal on scroll up
+      const scrollDiff = currentScrollY - lastScrollY;
+
+      if (currentScrollY > 120) {
+        if (scrollDiff > 6) {
+          // Scrolling down - hide nav to let visual content shine
+          header.classList.add('nav-hidden');
+        } else if (scrollDiff < -4) {
+          // Scrolling up - smoothly bring nav back
+          header.classList.remove('nav-hidden');
+        }
+      } else {
+        // At the top - always show
+        header.classList.remove('nav-hidden');
+      }
+
+      // 3. Hairline scroll progress indicator
+      if (progressBar) {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0) {
+          const progress = Math.min(100, Math.max(0, (currentScrollY / docHeight) * 100));
+          progressBar.style.width = `${progress}%`;
+        }
+      }
+
+      lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+      ticking = false;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateHeader();
   }
 
   // --- 2. MOBILE NAVIGATION DRAWER ---
