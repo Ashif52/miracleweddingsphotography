@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" width="420" height="80" fill="none">
+  <!-- Monogram MW Emblem -->
+  <g transform="translate(10, 8)">
+    <circle cx="32" cy="32" r="30" stroke="#B79A67" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.6"/>
+    <circle cx="32" cy="32" r="27" stroke="#B79A67" stroke-width="1"/>
+    <!-- Intertwined M & W -->
+    <path d="M19 44 L25 20 L32 35 L39 20 L45 44" stroke="#F8F5F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 28 L28 42 L32 32 L36 42 L40 28" stroke="#B79A67" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Brand Typography -->
+  <text x="86" y="38" font-family="'Cormorant Garamond', 'Playfair Display', Georgia, serif" font-size="25" font-weight="500" letter-spacing="4" fill="#F8F5F0">MIRACLE WEDDINGS</text>
+  <text x="88" y="55" font-family="'Montserrat', -apple-system, sans-serif" font-size="8.5" font-weight="400" letter-spacing="4.5" fill="#B79A67">PHOTOGRAPHY &amp; CINEMATIC FILMS</text>
+  <line x1="88" y1="62" x2="350" y2="62" stroke="#B79A67" stroke-width="0.75" opacity="0.35"/>
+</svg>

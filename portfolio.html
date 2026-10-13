@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Miracle Weddings Photography Chennai</title>
+  <meta name="description" content="Explore the authentic wedding photography archive by Miracle Weddings Photography. Featuring South Indian traditional weddings, candid moments, bridal portraits, and cathedral ceremonies.">
+  
+  <meta property="og:title" content="Wedding Portfolio — Miracle Weddings Photography">
+  <meta property="og:description" content="Authentic South Indian wedding photography archive, candid moments, and bridal portraits.">
+  <meta property="og:image" content="assets/images/dsc09924_3_copy.jpg">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header scrolled" id="site-header">
+    <div class="container nav-inner">
+      <nav class="nav-links-left" aria-label="Primary Navigation Left">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="portfolio.html" class="nav-item active">Portfolio</a>
+      </nav>
+
+      <a href="index.html" class="nav-logo-center" aria-label="Miracle Weddings Home">
+        <img src="assets/logos/logo-light.svg" alt="Miracle Weddings Logo" class="nav-logo-img">
+      </a>
+
+      <nav class="nav-links-right" aria-label="Primary Navigation Right">
+        <a href="wedding-films.html" class="nav-item">Wedding Films</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="contact.html" class="btn btn-outline-gold nav-cta-btn">Book Us</a>
+      </nav>
+
+      <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-backdrop" id="mobile-backdrop"></div>
+  <aside class="mobile-nav-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-nav-top">
+      <div class="mobile-brand-emblem" style="margin-bottom: 2rem;">
+        <img src="assets/logos/logo-light.svg" alt="Miracle Weddings" style="height: 38px;">
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link"><span>Home</span> <span>01</span></a>
+        <a href="about.html" class="mobile-nav-link"><span>About</span> <span>02</span></a>
+        <a href="portfolio.html" class="mobile-nav-link active"><span>Portfolio</span> <span>03</span></a>
+        <a href="wedding-films.html" class="mobile-nav-link"><span>Wedding Films</span> <span>04</span></a>
+        <a href="contact.html" class="mobile-nav-link"><span>Contact / Book</span> <span>05</span></a>
+      </nav>
+    </div>
+
+    <div class="mobile-nav-footer">
+      <div class="mobile-nav-contact-item">
+        <strong>Studio:</strong> Kodambakkam, Chennai, Tamil Nadu
+      </div>
+      <div class="mobile-nav-contact-item">
+        <strong>Call / WhatsApp:</strong> <a href="tel:+919025052520">+91 90250 52520</a>
+      </div>
+      <div class="mobile-nav-contact-item">
+        <strong>Email:</strong> <a href="mailto:miracleweddings95@gmail.com">miracleweddings95@gmail.com</a>
+      </div>
+      <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem;">Plan Your Wedding</a>
+    </div>
+  </aside>
+
+  <!-- SUBPAGE HERO -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-overlay"></div>
+    <div class="container reveal-fade-up">
+      <span class="overline">Visual Archive</span>
+      <h1 class="text-h1">The Portfolio <span class="serif-italic gold-accent">Archive.</span></h1>
+      <p class="lead-text">
+        Every photograph is an authentic memory captured in natural light, preserving the genuine souls of couples across South India.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN GALLERY SECTION -->
+  <section class="section" id="portfolio-archive">
+    <div class="container">
+      <!-- Category Filter Pills -->
+      <div class="gallery-filter-bar reveal-fade-up" role="tablist" aria-label="Portfolio Categories">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Works (15)</button>
+        <button class="filter-btn" data-filter="weddings" role="tab" aria-selected="false">Traditional Weddings</button>
+        <button class="filter-btn" data-filter="bridal" role="tab" aria-selected="false">Bridal Portraits</button>
+        <button class="filter-btn" data-filter="candid" role="tab" aria-selected="false">Candid Joy</button>
+        <button class="filter-btn" data-filter="prewedding" role="tab" aria-selected="false">Pre-Wedding Shoots</button>
+        <button class="filter-btn" data-filter="receptions" role="tab" aria-selected="false">Receptions &amp; Sangeet</button>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="masonry-grid" id="masonry-grid" aria-live="polite">
+        <!-- Injected dynamically by js/gallery.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX COMPONENT -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Detail Lightbox">
+    <div class="lightbox-header">
+      <div class="lightbox-counter" id="lightbox-counter">1 / 15</div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="lightbox-close-btn" aria-label="Close Lightbox">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="lightbox-body">
+      <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev-btn" aria-label="Previous image">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="lightbox-img-wrapper">
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+      </div>
+
+      <button class="lightbox-nav-btn lightbox-next" id="lightbox-next-btn" aria-label="Next image">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="lightbox-footer">
+      <h3 class="lightbox-caption-title" id="lightbox-caption-title"></h3>
+      <p class="lightbox-caption-desc" id="lightbox-caption-desc"></p>
+    </div>
+  </div>
+
+  <!-- WEDDING STORIES SPOTLIGHT SECTION -->
+  <section class="section section-dark" id="stories-archive">
+    <div class="container">
+      <div class="section-header reveal-fade-up">
+        <span class="overline">Anthologies</span>
+        <h2 class="text-h2">Featured Real Wedding <span class="serif-italic gold-accent">Stories.</span></h2>
+        <div class="section-divider"></div>
+        <p class="lead-text">
+          Deep dives into authentic multi-day celebrations documented with complete photographic and cinematic coverage.
+        </p>
+      </div>
+
+      <div class="stories-grid">
+        <article class="story-card reveal-fade-up">
+          <div class="story-image-wrap">
+            <img src="assets/images/dsc09924_3_copy.jpg" alt="Swathi &amp; Bharath Wedding" class="story-image" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+          </div>
+          <div class="story-content">
+            <div class="story-tags">
+              <span class="story-tag">Muhurtham &amp; Reception</span>
+              <span class="story-tag-separator">•</span>
+              <span class="story-tag">Chennai</span>
+            </div>
+            <h3 class="story-title">Swathi &amp; Bharath</h3>
+            <p class="story-snippet">From the early morning Vedic slokas to the opulent grand lotus mandap reception, every ritual was immortalized in timeless golden tones.</p>
+            <a href="contact.html" class="story-cta">Inquire for Similar Celebration &rarr;</a>
+          </div>
+        </article>
+
+        <article class="story-card reveal-fade-up reveal-delay-1">
+          <div class="story-image-wrap">
+            <img src="assets/images/19.jpg" alt="Klinton &amp; Dorathy Cathedral Wedding" class="story-image" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+          </div>
+          <div class="story-content">
+            <div class="story-tags">
+              <span class="story-tag">Cathedral Union</span>
+              <span class="story-tag-separator">•</span>
+              <span class="story-tag">Chennai</span>
+            </div>
+            <h3 class="story-title">Klinton &amp; Dorathy</h3>
+            <p class="story-snippet">A majestic Christian wedding highlighted by cathedral veil portraits, groom brotherhood suites, and classic palatial estate walk sessions.</p>
+            <a href="contact.html" class="story-cta">Inquire for Similar Celebration &rarr;</a>
+          </div>
+        </article>
+
+        <article class="story-card reveal-fade-up reveal-delay-2">
+          <div class="story-image-wrap">
+            <img src="assets/images/dsc01751_copy.jpg" alt="Ananya &amp; Siddharth Night Reception" class="story-image" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+          </div>
+          <div class="story-content">
+            <div class="story-tags">
+              <span class="story-tag">Destination Wedding</span>
+              <span class="story-tag-separator">•</span>
+              <span class="story-tag">Mahabalipuram</span>
+            </div>
+            <h3 class="story-title">Ananya &amp; Siddharth</h3>
+            <p class="story-snippet">A coastal paradise union under open starlit skies, illuminated lantern avenues, and romantic rim-lit silhouettes.</p>
+            <a href="contact.html" class="story-cta">Inquire for Similar Celebration &rarr;</a>
+          </div>
+        </article>
+
+        <article class="story-card reveal-fade-up reveal-delay-3">
+          <div class="story-image-wrap">
+            <img src="assets/images/dsc02736_copy.jpg" alt="Priya &amp; Ashwin Garland Exchange" class="story-image" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+          </div>
+          <div class="story-content">
+            <div class="story-tags">
+              <span class="story-tag">Traditional Maalai Maatral</span>
+              <span class="story-tag-separator">•</span>
+              <span class="story-tag">Coimbatore</span>
+            </div>
+            <h3 class="story-title">Priya &amp; Ashwin</h3>
+            <p class="story-snippet">The iconic garland battle and unconditional family laughter that epitomizes the high energy of Tamil weddings.</p>
+            <a href="contact.html" class="story-cta">Inquire for Similar Celebration &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section" style="background-color: var(--color-ivory); text-align: center;">
+    <div class="container container-narrow reveal-fade-up">
+      <span class="overline">Begin Your Heirloom</span>
+      <h2 class="text-h2" style="margin-bottom: 1rem;">Ready to Tell Your Story?</h2>
+      <p class="lead-text" style="margin-bottom: 2rem;">
+        Dates for the upcoming wedding season are limited. Reach out today to receive our comprehensive investment catalog and check date availability.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Check Calendar Availability</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <img src="assets/logos/logo-light.svg" alt="Miracle Weddings Logo" style="height: 48px;">
+          <p>
+            Luxury wedding photography &amp; cinematic films dedicated to capturing authentic emotions, sacred South Indian rituals, and timeless heirloom moments.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About the Studio</a></li>
+            <li><a href="portfolio.html" class="footer-link">Wedding Portfolio</a></li>
+            <li><a href="wedding-films.html" class="footer-link">Cinematic Films</a></li>
+            <li><a href="contact.html" class="footer-link">Inquire &amp; Book</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="portfolio.html" class="footer-link">Traditional Muhurtham</a></li>
+            <li><a href="portfolio.html" class="footer-link">Candid Photography</a></li>
+            <li><a href="portfolio.html" class="footer-link">Bridal Portraits</a></li>
+            <li><a href="wedding-films.html" class="footer-link">4K Cinema Teasers</a></li>
+            <li><a href="portfolio.html" class="footer-link">Pre-Wedding Shoots</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Studio Information</h4>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Kodambakkam, Chennai, Tamil Nadu — 600024</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:+919025052520" class="footer-link">+91 90250 52520</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:miracleweddings95@gmail.com" class="footer-link">miracleweddings95@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 Miracle Weddings Photography. All Rights Reserved.</div>
+        <div>Crafted with pure HTML5, CSS3 &amp; Vanilla JavaScript.</div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top-btn" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="js/gallery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
