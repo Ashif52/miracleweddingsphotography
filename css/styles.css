@@ -46,9 +46,10 @@
   --border-subtle-light: 1px solid rgba(235, 229, 225, 0.9);
   --border-subtle-dark: 1px solid rgba(255, 255, 255, 0.08);
   
-  /* Typography Families */
+  /* Typography Families — Powered by Apple's San Francisco (SF Pro) */
   --font-serif: 'Cormorant Garamond', Garamond, 'Playfair Display', Georgia, serif;
-  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", "Inter", -system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-sf);
   
   /* Fluid Typography Scale */
   --text-hero: clamp(2.4rem, 5.2vw + 1rem, 5rem);
@@ -1916,19 +1917,87 @@ h1, h2, h3, h4, .font-serif {
   text-decoration: underline;
 }
 
-/* Luxury Booking Form */
+/* Luxury Booking Form & Input System (Apple San Francisco Aesthetic) */
 .booking-form-card {
-  background-color: var(--color-charcoal-card);
-  border: var(--border-subtle);
+  background: linear-gradient(165deg, rgba(28, 22, 38, 0.72) 0%, rgba(18, 14, 25, 0.88) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
-  padding: clamp(2rem, 4vw, 3.5rem);
-  box-shadow: var(--shadow-deep);
+  padding: clamp(2rem, 4vw, 3.25rem);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  position: relative;
+}
+
+.sf-booking-card {
+  border: 1px solid rgba(158, 88, 219, 0.18);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 0 35px rgba(158, 88, 219, 0.08);
+  border-radius: 24px;
+}
+
+/* SF Card Header */
+.sf-card-header {
+  margin-bottom: 1.75rem;
+}
+
+.sf-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.sf-pill-tag {
+  display: inline-block;
+  font-family: var(--font-sf);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-coral);
+  background: rgba(236, 134, 112, 0.12);
+  border: 1px solid rgba(236, 134, 112, 0.28);
+  border-radius: 9999px;
+  padding: 0.24rem 0.75rem;
+}
+
+.sf-slots-tag {
+  font-family: var(--font-sf);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-gold-light);
+}
+
+.sf-form-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.sf-form-subtitle {
+  font-family: var(--font-sf);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-text-muted-on-dark);
+  margin-bottom: 1.25rem;
+}
+
+.sf-card-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
 }
 
 .form-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .form-group {
@@ -1937,49 +2006,83 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .form-label {
-  display: block;
-  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-sf);
+  font-size: 0.82rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-gold-light);
-  margin-bottom: 0.4rem;
+  letter-spacing: -0.005em;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 0.45rem;
+  text-transform: none;
+}
+
+.req-star {
+  color: var(--color-coral);
+  margin-left: 0.2rem;
+  font-weight: 600;
+}
+
+.optional-tag {
+  font-family: var(--font-sf);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--color-text-muted-on-dark);
+  letter-spacing: normal;
+}
+
+.input-shell {
+  position: relative;
+  width: 100%;
 }
 
 .form-input,
 .form-select,
 .form-textarea {
   width: 100%;
-  padding: 0.95rem 1.25rem;
-  background-color: rgba(23, 22, 20, 0.75);
-  border: 1px solid rgba(183, 154, 103, 0.3);
-  border-radius: var(--radius-sm);
-  color: var(--color-white);
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  transition: all var(--transition-fast);
+  padding: 0.85rem 1.15rem;
+  background-color: rgba(14, 11, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: var(--font-sf);
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color-scheme: dark;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.32);
+  font-family: var(--font-sf);
 }
 
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
-  border-color: var(--color-champagne-gold);
-  background-color: rgba(23, 22, 20, 0.95);
-  box-shadow: 0 0 15px rgba(183, 154, 103, 0.2);
+  border-color: rgba(158, 88, 219, 0.75);
+  background-color: rgba(18, 14, 25, 0.95);
+  box-shadow: 0 0 0 3px rgba(158, 88, 219, 0.18), 0 8px 24px rgba(0, 0, 0, 0.35);
   outline: none;
 }
 
 .form-input.invalid,
 .form-select.invalid,
 .form-textarea.invalid {
-  border-color: #E57373;
+  border-color: #FF5A5A;
+  box-shadow: 0 0 0 3px rgba(255, 90, 90, 0.15);
 }
 
 .form-error-msg {
   display: none;
-  font-size: 0.72rem;
-  color: #E57373;
-  margin-top: 0.3rem;
+  font-family: var(--font-sf);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #FF8585;
+  margin-top: 0.35rem;
 }
 
 .form-error-msg.visible {
@@ -1988,16 +2091,19 @@ h1, h2, h3, h4, .font-serif {
 
 .form-select {
   appearance: none;
+  -webkit-appearance: none;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23EC8670'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.2rem;
+  background-position: right 1.15rem center;
+  background-size: 1.15rem;
   cursor: pointer;
+  padding-right: 2.5rem;
 }
 
 .form-select option {
-  background-color: var(--color-charcoal);
-  color: var(--color-white);
+  background-color: #140E1B;
+  color: #ffffff;
+  padding: 0.5rem;
 }
 
 .form-textarea {
@@ -2007,13 +2113,65 @@ h1, h2, h3, h4, .font-serif {
 
 .form-submit-btn {
   width: 100%;
-  padding: 1.1rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
+  padding: 1.05rem 1.75rem;
+  font-family: var(--font-sf);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 14px;
+}
+
+.sf-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: var(--gradient-brand);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(158, 88, 219, 0.35), 0 2px 6px rgba(236, 134, 112, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0.5rem;
+}
+
+.sf-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(158, 88, 219, 0.5), 0 4px 12px rgba(236, 134, 112, 0.4);
+}
+
+.sf-submit-btn:active {
+  transform: translateY(0);
+}
+
+.sf-submit-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.sf-submit-btn:hover svg {
+  transform: translateX(3px) translateY(-1px);
+}
+
+.sf-form-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+  font-family: var(--font-sf);
+  font-size: 0.78rem;
+  color: var(--color-text-muted-on-dark);
+  text-align: center;
+}
+
+.sf-form-trust svg {
+  flex-shrink: 0;
+  color: var(--color-champagne-gold);
 }
 
 .form-disclaimer {
-  font-size: 0.72rem;
+  font-family: var(--font-sf);
+  font-size: 0.74rem;
   color: var(--color-text-muted-on-dark);
   text-align: center;
   margin-top: 1rem;
@@ -2516,13 +2674,289 @@ h1, h2, h3, h4, .font-serif {
   margin-bottom: 0.8rem;
 }
 
-/* Contact Page Specifics */
-.contact-page-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: clamp(2.5rem, 5vw, 5rem);
+/* --- 17. CONTACT PAGE & STUDIO SPECIFICS (APPLE SAN FRANCISCO REDESIGN) --- */
+.contact-inquiry-section {
+  position: relative;
 }
 
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.18fr;
+  gap: clamp(2rem, 4.5vw, 4.5rem);
+  align-items: start;
+}
+
+/* Studio Details Column */
+.contact-details-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.sf-studio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(158, 88, 219, 0.12);
+  border: 1px solid rgba(158, 88, 219, 0.28);
+  border-radius: 9999px;
+  font-family: var(--font-sf);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-purple-light);
+  margin-bottom: 1.25rem;
+  width: fit-content;
+}
+
+.badge-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  box-shadow: 0 0 10px var(--color-coral);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+.contact-main-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.16;
+  color: var(--color-white);
+  letter-spacing: -0.015em;
+  margin-bottom: 1.15rem;
+}
+
+.contact-lead-desc {
+  font-family: var(--font-sf);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted-on-dark);
+  margin-bottom: 2.25rem;
+  max-width: 520px;
+}
+
+/* Contact Capsules Stack */
+.contact-capsules-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  margin-bottom: 1.75rem;
+}
+
+.sf-contact-card {
+  background: rgba(25, 20, 32, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.sf-contact-card-link {
+  cursor: pointer;
+}
+
+.sf-contact-card:hover {
+  background: rgba(33, 26, 42, 0.85);
+  border-color: rgba(158, 88, 219, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(158, 88, 219, 0.12);
+}
+
+.sf-icon-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(158, 88, 219, 0.18), rgba(236, 134, 112, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-coral);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.sf-contact-card:hover .sf-icon-bubble {
+  transform: scale(1.05);
+}
+
+.sf-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.sf-card-label {
+  font-family: var(--font-sf);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-gold-light);
+}
+
+.sf-card-val {
+  font-family: var(--font-sf);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin: 0;
+  word-break: break-word;
+}
+
+.sf-card-note {
+  font-family: var(--font-sf);
+  font-size: 0.8rem;
+  color: var(--color-text-muted-on-dark);
+}
+
+.sf-tag-pill {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  font-family: var(--font-sf);
+  font-size: 0.72rem;
+  color: var(--color-coral);
+  background: rgba(236, 134, 112, 0.1);
+  border: 1px solid rgba(236, 134, 112, 0.25);
+  border-radius: 9999px;
+  padding: 0.15rem 0.6rem;
+}
+
+.sf-card-action {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-gold-light);
+  font-family: var(--font-sf);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: transform 0.25s ease, color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.sf-contact-card:hover .sf-card-action {
+  transform: translateX(4px);
+  color: var(--color-coral);
+}
+
+/* Apple VIP WhatsApp Concierge Card */
+.sf-whatsapp-vip-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(25, 20, 32, 0.82) 0%, rgba(18, 14, 24, 0.92) 100%);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 20px;
+  padding: 1.45rem 1.6rem;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.vip-card-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(37, 211, 102, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.vip-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.vip-badge-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.5rem;
+}
+
+.vip-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #25D366;
+  box-shadow: 0 0 8px #25D366;
+}
+
+.vip-badge-text {
+  font-family: var(--font-sf);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #55E88E;
+}
+
+.vip-card-title {
+  font-family: var(--font-sf);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.vip-card-desc {
+  font-family: var(--font-sf);
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+  margin-bottom: 1.15rem;
+}
+
+.sf-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  padding: 0.75rem 1.35rem;
+  border-radius: 9999px;
+  font-family: var(--font-sf);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.32);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.sf-whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.48);
+  color: #ffffff;
+}
+
+.sf-whatsapp-btn:active {
+  transform: translateY(0);
+}
+
+/* Fallback legacy classes for other areas if referenced */
 .contact-card-box {
   background-color: var(--color-charcoal-card);
   border: var(--border-subtle);
@@ -2929,9 +3363,37 @@ h1, h2, h3, h4, .font-serif {
   }
 
   .booking-form-card,
+  .sf-booking-card,
   .contact-card-box {
     padding: 1.5rem 1.15rem;
-    border-radius: var(--radius-sm);
+    border-radius: 20px;
+  }
+
+  .sf-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .sf-contact-card {
+    padding: 1rem 1.15rem;
+    gap: 0.95rem;
+  }
+
+  .sf-icon-bubble {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .sf-whatsapp-vip-card {
+    padding: 1.25rem 1.15rem;
+    border-radius: 18px;
+  }
+
+  .sf-whatsapp-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .form-input,
@@ -2941,9 +3403,10 @@ h1, h2, h3, h4, .font-serif {
     padding: 0.85rem 1rem;
   }
 
-  .form-submit-btn {
+  .form-submit-btn,
+  .sf-submit-btn {
     padding: 0.95rem;
-    font-size: 0.78rem;
+    font-size: 0.88rem;
   }
 
   /* --- 8. FILM SHOWCASE & OTHER GRIDS --- */
@@ -3046,6 +3509,18 @@ h1, h2, h3, h4, .font-serif {
 
   .insta-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-main-heading {
+    font-size: clamp(1.75rem, 6.5vw, 2.1rem);
+  }
+
+  .sf-card-val {
+    font-size: 0.9rem;
+  }
+
+  .sf-card-action {
+    display: none;
   }
 }
 

@@ -15,7 +15,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -92,154 +92,232 @@
     </div>
   </section>
 
-  <!-- CONTACT & INQUIRY SECTION -->
-  <section class="section section-dark" id="inquiry">
+  <!-- CONTACT & INQUIRY SECTION (REDESIGNED WITH APPLE SAN FRANCISCO AESTHETIC) -->
+  <section class="section section-dark contact-inquiry-section" id="inquiry">
     <div class="container">
       <div class="contact-page-grid">
-        <!-- Left: Studio Details & Direct Links -->
-        <div class="reveal-fade-up">
-          <span class="overline">Chennai Studio</span>
-          <h2 class="text-h2" style="margin-bottom: 1.25rem;">
-            Visit Our Creative <span class="serif-italic gold-accent">Space.</span>
+        <!-- Left Column: Studio Details & Apple VIP Concierge -->
+        <div class="contact-details-col reveal-fade-up">
+          <div class="sf-studio-badge">
+            <span class="badge-pulse-dot"></span>
+            <span>Chennai Flagship Studio</span>
+          </div>
+
+          <h2 class="contact-main-heading">
+            Visit Our Creative <span class="brand-gradient-text">Space.</span>
           </h2>
-          <p class="lead-text" style="margin-bottom: 1.5rem;">
-            We love meeting couples in person at our Kodambakkam studio to show sample Italian leather albums, preview 4K cinema showreels on our studio master monitor, and map out wedding timelines over filter coffee.
+
+          <p class="contact-lead-desc">
+            We love meeting couples in person at our Kodambakkam studio to share our curated archival wedding albums, preview 4K cinema showreels on our calibrated master display, and craft your custom celebration timeline over artisanal South Indian filter coffee.
           </p>
 
-          <div class="contact-info-list">
-            <div class="contact-info-block">
-              <div class="contact-icon-wrap">
+          <div class="contact-capsules-stack">
+            <!-- Studio Address Capsule -->
+            <div class="sf-contact-card">
+              <div class="sf-icon-bubble">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
               </div>
-              <div class="contact-details">
-                <h4 class="font-serif">Studio Address</h4>
-                <p>Kodambakkam, Chennai, Tamil Nadu — 600024</p>
-                <p style="font-size: 0.8rem; color: var(--color-champagne-gold); margin-top: 0.2rem;">(Visits by prior appointment)</p>
+              <div class="sf-card-body">
+                <span class="sf-card-label">Studio Location</span>
+                <p class="sf-card-val">Kodambakkam, Chennai, Tamil Nadu — 600024</p>
+                <span class="sf-tag-pill">Visits by Prior Appointment</span>
               </div>
             </div>
 
-            <div class="contact-info-block">
-              <div class="contact-icon-wrap">
+            <!-- Direct Line Capsule -->
+            <a href="tel:+919025052520" class="sf-contact-card sf-contact-card-link" aria-label="Call Direct Studio Line">
+              <div class="sf-icon-bubble">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
               </div>
-              <div class="contact-details">
-                <h4 class="font-serif">Direct Booking Line</h4>
-                <p><a href="tel:+919025052520">+91 90250 52520</a></p>
-                <p style="font-size: 0.8rem; color: var(--color-text-muted-on-dark);">Monday – Sunday: 10:00 AM – 8:00 PM</p>
+              <div class="sf-card-body">
+                <span class="sf-card-label">Direct Studio Line</span>
+                <p class="sf-card-val">+91 90250 52520</p>
+                <span class="sf-card-note">Monday – Sunday: 10:00 AM – 8:00 PM</span>
               </div>
-            </div>
+              <div class="sf-card-action">
+                <span class="sf-tap-cue">Call</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </a>
 
-            <div class="contact-info-block">
-              <div class="contact-icon-wrap">
+            <!-- Official Email Capsule -->
+            <a href="mailto:miracleweddings95@gmail.com" class="sf-contact-card sf-contact-card-link" aria-label="Email Official Desk">
+              <div class="sf-icon-bubble">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
               </div>
-              <div class="contact-details">
-                <h4 class="font-serif">Official Email</h4>
-                <p><a href="mailto:miracleweddings95@gmail.com">miracleweddings95@gmail.com</a></p>
+              <div class="sf-card-body">
+                <span class="sf-card-label">Official Email</span>
+                <p class="sf-card-val">miracleweddings95@gmail.com</p>
+                <span class="sf-card-note">Direct response within 24 hours</span>
               </div>
-            </div>
+              <div class="sf-card-action">
+                <span class="sf-tap-cue">Write</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </a>
           </div>
 
-          <!-- Fast-Track WhatsApp Box -->
-          <div class="whatsapp-direct-box">
-            <div class="whatsapp-text">
-              <h5>Fast-Track Date Check</h5>
-              <p>Planning an upcoming wedding? Chat directly with our director on WhatsApp.</p>
+          <!-- Redesigned Apple-Style VIP WhatsApp Concierge Card -->
+          <div class="sf-whatsapp-vip-card">
+            <div class="vip-card-glow" aria-hidden="true"></div>
+            <div class="vip-card-content">
+              <div class="vip-badge-row">
+                <span class="vip-live-dot"></span>
+                <span class="vip-badge-text">Priority Calendar Concierge</span>
+              </div>
+              <h4 class="vip-card-title">Instant Date Availability Check</h4>
+              <p class="vip-card-desc">Need immediate confirmation or planning on short notice? Chat directly with our director on WhatsApp.</p>
+              <a href="https://wa.me/919025052520?text=Hello%20Miracle%20Weddings,%20I%20would%20like%20to%20check%20availability%20for%20our%20wedding%20date." target="_blank" rel="noopener noreferrer" class="sf-whatsapp-btn" aria-label="Open WhatsApp Direct Chat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.301-.15-1.782-.879-2.058-.98-.276-.1-.477-.15-.678.15-.2.3-.777.98-.953 1.18-.175.2-.351.225-.652.075-.3-.15-1.266-.467-2.411-1.488-.891-.796-1.493-1.778-1.668-2.079-.176-.3-.019-.462.131-.611.136-.134.301-.351.452-.526.15-.176.2-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.631-.93-2.232-.244-.588-.492-.508-.677-.518-.175-.01-.376-.01-.577-.01-.201 0-.527.075-.803.376-.276.3-1.053 1.029-1.053 2.509 0 1.48 1.079 2.909 1.23 3.11 0 .001.001.001.001.001.15.201 2.124 3.243 5.145 4.548.719.311 1.28.497 1.718.636.722.23 1.378.197 1.897.12.578-.087 1.782-.728 2.033-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.351z"/>
+                </svg>
+                <span>WhatsApp Studio Director</span>
+              </a>
             </div>
-            <a href="https://wa.me/919025052520?text=Hello%20Miracle%20Weddings,%20I%20would%20like%20to%20check%20availability%20for%20our%20wedding%20date." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background-color: #25D366; border-color: #25D366; color: #fff; padding: 0.65rem 1.25rem;">
-              WhatsApp Us
-            </a>
           </div>
         </div>
 
-        <!-- Right: Comprehensive Booking Form -->
-        <div class="booking-form-card reveal-fade-up reveal-delay-2">
+        <!-- Right Column: Apple Glassmorphic Booking Concierge Card -->
+        <div class="booking-form-card sf-booking-card reveal-fade-up reveal-delay-2">
+          <div class="sf-card-header">
+            <div class="sf-header-top">
+              <span class="sf-pill-tag">Bespoke Commission</span>
+              <span class="sf-slots-tag">Limited Dates for 2026–2027</span>
+            </div>
+            <h3 class="sf-form-title">Reserve Your Wedding Date</h3>
+            <p class="sf-form-subtitle">Share your celebration details below. We prepare tailored coverage collections with investment details.</p>
+            <div class="sf-card-divider"></div>
+          </div>
+
           <form id="wedding-inquiry-form" novalidate>
             <div class="form-grid-2">
               <div class="form-group">
-                <label for="client-name" class="form-label">Full Names (Bride &amp; Groom) *</label>
-                <input type="text" id="client-name" class="form-input" placeholder="e.g. Swathi &amp; Bharath" required>
+                <label for="client-name" class="form-label">
+                  <span>Full Names (Bride &amp; Groom)</span>
+                  <span class="req-star">*</span>
+                </label>
+                <div class="input-shell">
+                  <input type="text" id="client-name" class="form-input" placeholder="e.g. Swathi &amp; Bharath" required autocomplete="name">
+                </div>
                 <div class="form-error-msg"></div>
               </div>
 
               <div class="form-group">
-                <label for="client-email" class="form-label">Email Address *</label>
-                <input type="email" id="client-email" class="form-input" placeholder="your.email@domain.com" required>
-                <div class="form-error-msg"></div>
-              </div>
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="client-phone" class="form-label">Phone / WhatsApp Number *</label>
-                <input type="tel" id="client-phone" class="form-input" placeholder="+91 90250 52520" required>
-                <div class="form-error-msg"></div>
-              </div>
-
-              <div class="form-group">
-                <label for="wedding-date" class="form-label">Wedding Date *</label>
-                <input type="date" id="wedding-date" class="form-input" required>
+                <label for="client-email" class="form-label">
+                  <span>Email Address</span>
+                  <span class="req-star">*</span>
+                </label>
+                <div class="input-shell">
+                  <input type="email" id="client-email" class="form-input" placeholder="your.email@domain.com" required autocomplete="email">
+                </div>
                 <div class="form-error-msg"></div>
               </div>
             </div>
 
             <div class="form-grid-2">
               <div class="form-group">
-                <label for="wedding-location" class="form-label">Wedding City / Venue *</label>
-                <input type="text" id="wedding-location" class="form-input" placeholder="e.g. Chennai / Mahabalipuram / Bangalore" required>
+                <label for="client-phone" class="form-label">
+                  <span>Phone / WhatsApp Number</span>
+                  <span class="req-star">*</span>
+                </label>
+                <div class="input-shell">
+                  <input type="tel" id="client-phone" class="form-input" placeholder="+91 90250 52520" required autocomplete="tel">
+                </div>
                 <div class="form-error-msg"></div>
               </div>
 
               <div class="form-group">
-                <label for="event-type" class="form-label">Celebration Type *</label>
-                <select id="event-type" class="form-select" required>
-                  <option value="">Select Celebration</option>
-                  <option value="South Indian Traditional Wedding">South Indian Traditional Wedding</option>
-                  <option value="Christian / Church Wedding">Christian / Church Wedding</option>
-                  <option value="Destination Wedding">Destination Wedding</option>
-                  <option value="Pre-Wedding Couple Shoot">Pre-Wedding Shoot Only</option>
-                  <option value="Reception & Sangeet">Reception &amp; Sangeet</option>
-                </select>
+                <label for="wedding-date" class="form-label">
+                  <span>Wedding Date</span>
+                  <span class="req-star">*</span>
+                </label>
+                <div class="input-shell">
+                  <input type="date" id="wedding-date" class="form-input" required>
+                </div>
+                <div class="form-error-msg"></div>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="wedding-location" class="form-label">
+                  <span>Wedding City / Venue</span>
+                  <span class="req-star">*</span>
+                </label>
+                <div class="input-shell">
+                  <input type="text" id="wedding-location" class="form-input" placeholder="e.g. Chennai / Mahabalipuram / Bangalore" required>
+                </div>
+                <div class="form-error-msg"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="event-type" class="form-label">
+                  <span>Celebration Type</span>
+                  <span class="req-star">*</span>
+                </label>
+                <div class="input-shell select-shell">
+                  <select id="event-type" class="form-select" required>
+                    <option value="">Select Celebration</option>
+                    <option value="South Indian Traditional Wedding">South Indian Traditional Wedding</option>
+                    <option value="Christian / Church Wedding">Christian / Church Wedding</option>
+                    <option value="Destination Wedding">Destination Wedding</option>
+                    <option value="Pre-Wedding Couple Shoot">Pre-Wedding Shoot Only</option>
+                    <option value="Reception & Sangeet">Reception &amp; Sangeet</option>
+                  </select>
+                </div>
                 <div class="form-error-msg"></div>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="required-services" class="form-label">Required Coverage *</label>
-              <select id="required-services" class="form-select" required>
-                <option value="">Select Service Tier</option>
-                <option value="Complete Photo & Cinema Package">Complete Photo &amp; Cinema (Recommended)</option>
-                <option value="Candid & Traditional Photography Only">Photography Only</option>
-                <option value="Cinematic Wedding Films Only">Cinematic Films Only</option>
-                <option value="Pre-Wedding + 2-Day Wedding Coverage">Multi-Day Comprehensive Coverage</option>
-              </select>
+              <label for="required-services" class="form-label">
+                <span>Required Coverage</span>
+                <span class="req-star">*</span>
+              </label>
+              <div class="input-shell select-shell">
+                <select id="required-services" class="form-select" required>
+                  <option value="">Select Service Tier</option>
+                  <option value="Complete Photo & Cinema Package">Complete Photo &amp; Cinema (Recommended)</option>
+                  <option value="Candid & Traditional Photography Only">Photography Only</option>
+                  <option value="Cinematic Wedding Films Only">Cinematic Films Only</option>
+                  <option value="Pre-Wedding + 2-Day Wedding Coverage">Multi-Day Comprehensive Coverage</option>
+                </select>
+              </div>
               <div class="form-error-msg"></div>
             </div>
 
             <div class="form-group">
-              <label for="client-message" class="form-label">Wedding Details &amp; Special Requests</label>
-              <textarea id="client-message" class="form-textarea" placeholder="Share any specific rituals, expected guest count, or aesthetic preferences..."></textarea>
+              <label for="client-message" class="form-label">
+                <span>Wedding Details &amp; Special Requests</span>
+                <span class="optional-tag">Optional</span>
+              </label>
+              <div class="input-shell">
+                <textarea id="client-message" class="form-textarea" placeholder="Tell us about your rituals, estimated guest count, unique aesthetics, or special moments you cherish..."></textarea>
+              </div>
             </div>
 
-            <button type="submit" class="btn btn-primary form-submit-btn">
+            <button type="submit" class="btn btn-primary form-submit-btn sf-submit-btn">
               <span>Submit Booking Request</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
               </svg>
             </button>
 
-            <p class="form-disclaimer">
-              We respond to all verified inquiries within 24 hours. Your information is strictly confidential.
-            </p>
+            <div class="sf-form-trust">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>We personally reply within 24 hours. Your information is strictly confidential.</span>
+            </div>
           </form>
         </div>
       </div>
