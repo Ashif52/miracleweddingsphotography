@@ -225,6 +225,7 @@ class MiracleApp {
     const drawer = document.querySelector('.mobile-nav-drawer');
     const backdrop = document.querySelector('.mobile-nav-backdrop');
     const navLinks = document.querySelectorAll('.mobile-nav-link');
+    const closeBtns = document.querySelectorAll('.mobile-nav-close, #mobile-drawer-close');
 
     if (!toggleBtn || !drawer) return;
 
@@ -248,6 +249,10 @@ class MiracleApp {
       const isOpen = drawer.classList.contains('open');
       if (isOpen) closeDrawer();
       else openDrawer();
+    });
+
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', closeDrawer);
     });
 
     if (backdrop) backdrop.addEventListener('click', closeDrawer);

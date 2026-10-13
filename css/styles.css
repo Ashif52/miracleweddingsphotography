@@ -642,6 +642,52 @@ section[id],
   right: 0;
 }
 
+/* Mobile Drawer Header & Cancel/Close Button */
+.mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: clamp(1.5rem, 3.5vh, 2.5rem);
+}
+
+.mobile-brand-emblem img {
+  height: 48px;
+  width: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+
+.mobile-nav-close {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-nav-close:hover {
+  background: rgba(236, 134, 112, 0.22);
+  border-color: rgba(236, 134, 112, 0.5);
+  color: var(--color-coral);
+  transform: rotate(90deg) scale(1.06);
+}
+
+.mobile-nav-close:active {
+  transform: scale(0.92);
+}
+
 .mobile-nav-backdrop {
   position: fixed;
   top: 0;
@@ -3156,7 +3202,7 @@ section[id],
   .mobile-nav-drawer {
     width: 88%;
     max-width: 350px;
-    padding: clamp(4.5rem, 9vh, 5.5rem) 1.6rem 2rem;
+    padding: clamp(2rem, 4.5vh, 2.85rem) 1.6rem 2rem;
     background-color: rgba(14, 11, 18, 0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
