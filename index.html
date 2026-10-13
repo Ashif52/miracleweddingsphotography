@@ -88,13 +88,35 @@
     </div>
   </aside>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION WITH LUXURY CINEMATIC SLIDESHOW -->
   <section class="hero" id="hero">
-    <div class="hero-background-wrapper">
-      <img src="assets/images/dsc00775_copy.jpg" alt="South Indian bride and groom in gold Kanchipuram silk" class="hero-bg-img" fetchpriority="high">
+    <div class="hero-slideshow" id="hero-slideshow" aria-label="Miracle Weddings Featured Portfolio Slideshow">
+      <!-- Slide 1 -->
+      <div class="hero-slide active" data-index="0" data-tag="Temple Heritage" data-title="The Sacred Muhurtham">
+        <img src="assets/images/dsc00775_copy.jpg" alt="South Indian bride and groom in gold Kanchipuram silk during sacred Muhurtham" class="hero-slide-img" fetchpriority="high">
+      </div>
+      <!-- Slide 2 -->
+      <div class="hero-slide" data-index="1" data-tag="Bridal Elegance" data-title="The Royal Kanchipuram Bride">
+        <img src="assets/images/dsc00479_copy.jpg" alt="South Indian bride in temple jewelry and royal silk" class="hero-slide-img" loading="lazy">
+      </div>
+      <!-- Slide 3 -->
+      <div class="hero-slide" data-index="2" data-tag="Candid Emotion" data-title="Unscripted Joy & Garland Exchange">
+        <img src="assets/images/dsc02153_copy.jpg" alt="Candid laughter between couple during wedding rituals" class="hero-slide-img" loading="lazy">
+      </div>
+      <!-- Slide 4 -->
+      <div class="hero-slide" data-index="3" data-tag="Evening Grandeur" data-title="Grand Twilight Reception">
+        <img src="assets/images/dsc09924_3_copy.jpg" alt="Luxury wedding reception couple portrait at dusk" class="hero-slide-img" loading="lazy">
+      </div>
+      <!-- Slide 5 -->
+      <div class="hero-slide" data-index="4" data-tag="Sunset Heirloom" data-title="Golden Hour Romance">
+        <img src="assets/images/dsc00828_copy.jpg" alt="Romantic couple in golden sunset light" class="hero-slide-img" loading="lazy">
+      </div>
+
+      <!-- Deep Luxury Theatrical Overlay -->
       <div class="hero-overlay"></div>
     </div>
 
+    <!-- Centered Editorial Content -->
     <div class="container hero-content">
       <div class="hero-badge-container reveal-fade-up">
         <span class="hero-badge-dot"></span>
@@ -106,7 +128,7 @@
       </h1>
 
       <p class="hero-subtitle reveal-fade-up reveal-delay-2">
-        Wedding Photography &amp; Cinematic Films
+        Wedding Photography &amp; Cinematic Films Rooted in Heritage
       </p>
 
       <div class="hero-actions reveal-fade-up reveal-delay-3">
@@ -115,6 +137,50 @@
       </div>
     </div>
 
+    <!-- Luxury Slideshow Bottom Navigation Deck -->
+    <div class="hero-slideshow-controls" aria-label="Hero Slideshow Controls">
+      <!-- Prev / Next Pill Buttons -->
+      <div class="hero-ctrl-nav">
+        <button class="hero-ctrl-btn hero-ctrl-prev" id="hero-prev" aria-label="Previous Slide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="hero-ctrl-btn hero-ctrl-next" id="hero-next" aria-label="Next Slide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- Segmented Progress Indicators -->
+      <div class="hero-slideshow-indicators" id="hero-indicators">
+        <button class="hero-indicator-item active" data-slide="0" aria-label="Go to slide 1: The Sacred Muhurtham">
+          <span class="indicator-number">01</span>
+          <span class="indicator-bar"><span class="indicator-progress"></span></span>
+        </button>
+        <button class="hero-indicator-item" data-slide="1" aria-label="Go to slide 2: The Royal Kanchipuram Bride">
+          <span class="indicator-number">02</span>
+          <span class="indicator-bar"><span class="indicator-progress"></span></span>
+        </button>
+        <button class="hero-indicator-item" data-slide="2" aria-label="Go to slide 3: Unscripted Joy & Garland Exchange">
+          <span class="indicator-number">03</span>
+          <span class="indicator-bar"><span class="indicator-progress"></span></span>
+        </button>
+        <button class="hero-indicator-item" data-slide="3" aria-label="Go to slide 4: Grand Twilight Reception">
+          <span class="indicator-number">04</span>
+          <span class="indicator-bar"><span class="indicator-progress"></span></span>
+        </button>
+        <button class="hero-indicator-item" data-slide="4" aria-label="Go to slide 5: Golden Hour Romance">
+          <span class="indicator-number">05</span>
+          <span class="indicator-bar"><span class="indicator-progress"></span></span>
+        </button>
+      </div>
+
+      <!-- Live Slide Caption / Metadata Badge -->
+      <div class="hero-current-label" id="hero-caption">
+        <span class="hero-caption-index" id="hero-caption-num">01 / 05</span>
+        <span class="hero-caption-title" id="hero-caption-title">The Sacred Muhurtham</span>
+      </div>
+    </div>
+
+    <!-- Scroll Down Pill Indicator -->
     <a href="#intro" class="hero-scroll-indicator" aria-label="Scroll to introduction">
       <span class="hero-scroll-text">Scroll</span>
       <div class="hero-scroll-line"></div>

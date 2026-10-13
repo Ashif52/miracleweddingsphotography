@@ -11,6 +11,7 @@
 
 class MiracleApp {
   constructor() {
+    this.initHeroSlideshow();
     this.initHeaderScroll();
     this.initMobileNav();
     this.initScrollReveal();
@@ -18,6 +19,142 @@ class MiracleApp {
     this.initVideoShowreel();
     this.initAccordions();
     this.initBackToTop();
+  }
+
+  // --- 0. HERO CINEMATIC SLIDESHOW ---
+  initHeroSlideshow() {
+    const slideshow = document.getElementById('hero-slideshow');
+    if (!slideshow) return;
+
+    const slides = slideshow.querySelectorAll('.hero-slide');
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+    const indicators = document.querySelectorAll('.hero-indicator-item');
+    const captionNum = document.getElementById('hero-caption-num');
+    const captionTitle = document.getElementById('hero-caption-title');
+
+    if (!slides.length) return;
+
+    let currentIndex = 0;
+    let autoplayTimer = null;
+    const duration = 5500;
+
+    const showSlide = (index) => {
+      currentIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentIndex);
+      });
+
+      indicators.forEach((indicator, i) => {
+        const isActive = i === currentIndex;
+        indicator.classList.toggle('active', isActive);
+        indicator.setAttribute('aria-current', isActive ? 'true' : 'false');
+
+        const bar = indicator.querySelector('.indicator-progress');
+        if (bar) {
+          bar.style.transition = 'none';
+          bar.style.width = '0%';
+          if (isActive) {
+            void bar.offsetWidth; // Force reflow
+            bar.style.transition = `width ${duration}ms linear`;
+            bar.style.width = '100%';
+          }
+        }
+      });
+
+      const currentSlide = slides[currentIndex];
+      if (currentSlide && captionNum && captionTitle) {
+        captionNum.textContent = `0${currentIndex + 1} / 0${slides.length}`;
+        captionTitle.textContent = currentSlide.getAttribute('data-title') || '';
+      }
+    };
+
+    const nextSlide = () => {
+      showSlide(currentIndex + 1);
+    };
+
+    const prevSlide = () => {
+      showSlide(currentIndex - 1);
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      showSlide(currentIndex);
+      autoplayTimer = setInterval(nextSlide, duration);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    const resetAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoplay();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+      });
+    }
+
+    indicators.forEach((indicator, idx) => {
+      indicator.addEventListener('click', () => {
+        showSlide(idx);
+        resetAutoplay();
+      });
+    });
+
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+      heroSection.addEventListener('mouseenter', stopAutoplay);
+      heroSection.addEventListener('mouseleave', startAutoplay);
+    }
+
+    // Touch swipe support
+    let touchStartX = 0;
+    slideshow.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay();
+    }, { passive: true });
+
+    slideshow.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 45) {
+        nextSlide();
+      } else if (touchEndX - touchStartX > 45) {
+        prevSlide();
+      }
+      startAutoplay();
+    }, { passive: true });
+
+    // Keyboard navigation when near top of page
+    document.addEventListener('keydown', (e) => {
+      if (window.scrollY < 600) {
+        if (e.key === 'ArrowRight') {
+          nextSlide();
+          resetAutoplay();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+          resetAutoplay();
+        }
+      }
+    });
+
+    // Start slideshow
+    startAutoplay();
   }
 
   // --- 1. HEADER SCROLL INTERACTION ---
