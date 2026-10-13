@@ -692,13 +692,14 @@ h1, h2, h3, h4, .font-serif {
   position: relative;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
   color: var(--color-white);
   background-color: var(--color-charcoal);
   overflow: hidden;
   padding-top: 6.5rem;
-  padding-bottom: 6rem;
+  padding-bottom: clamp(3.2rem, 7vh, 5.5rem);
 }
 
 .hero-slideshow {
@@ -743,7 +744,7 @@ h1, h2, h3, h4, .font-serif {
   transform: scale(1.06);
 }
 
-/* Deep Luxury Theatrical Overlay */
+/* Deep Luxury Theatrical Overlay — Crystal clear over couple faces, rich contrast for grounded text */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -751,8 +752,8 @@ h1, h2, h3, h4, .font-serif {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 50% 45%, rgba(158, 88, 219, 0.12) 0%, rgba(20, 16, 26, 0.65) 65%, rgba(15, 12, 20, 0.92) 100%),
-    linear-gradient(180deg, rgba(14, 11, 18, 0.65) 0%, transparent 35%, rgba(14, 11, 18, 0.88) 100%);
+    radial-gradient(circle at 50% 40%, rgba(158, 88, 219, 0.10) 0%, rgba(20, 16, 26, 0.6) 65%, rgba(15, 12, 20, 0.94) 100%),
+    linear-gradient(180deg, rgba(14, 11, 18, 0.55) 0%, transparent 28%, rgba(14, 11, 18, 0.35) 54%, rgba(14, 11, 18, 0.92) 100%);
   z-index: 3;
 }
 
@@ -761,9 +762,9 @@ h1, h2, h3, h4, .font-serif {
   z-index: 4;
   text-align: center;
   max-width: 960px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem;
-  margin-top: clamp(3rem, 7.5vh, 6.5rem); /* Positions hero text lower */
+  margin: auto auto 0 auto; /* Gracefully grounds hero content in the lower third, keeping couple faces clear */
+  padding: 1.5rem 1.5rem 0.5rem;
+  width: 100%;
 }
 
 .hero-badge-container {
@@ -2682,6 +2683,15 @@ h1, h2, h3, h4, .font-serif {
   
   .hero-indicator-item.active .indicator-bar {
     width: 36px;
+  }
+
+  .hero {
+    padding-top: 5.25rem;
+    padding-bottom: clamp(2.2rem, 5.5vh, 3.5rem);
+  }
+
+  .hero-content {
+    padding: 1rem 1rem 0.25rem;
   }
 
   .intro-grid,
