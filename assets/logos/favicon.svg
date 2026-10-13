@@ -1,6 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#171614"/>
-  <circle cx="32" cy="32" r="28" stroke="#B79A67" stroke-width="1.5"/>
-  <path d="M19 44 L25 20 L32 35 L39 20 L45 44" stroke="#F8F5F0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M24 28 L28 42 L32 32 L36 42 L40 28" stroke="#B79A67" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="favBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9E58DB"/>
+      <stop offset="52%" stop-color="#C465A8"/>
+      <stop offset="100%" stop-color="#EC8670"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#favBrandGrad)"/>
+  <g transform="translate(8, 8) scale(0.44)" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 45 15 C 20 15, 6 36, 14 62 C 20 78, 38 92, 58 92" stroke-width="9"/>
+    <path d="M 75 92 C 100 92, 114 71, 106 45 C 100 29, 82 15, 62 15" stroke-width="9"/>
+    <path d="M 22 72 L 40 28 L 60 58 L 80 28 L 98 72" stroke-width="9"/>
+  </g>
 </svg>

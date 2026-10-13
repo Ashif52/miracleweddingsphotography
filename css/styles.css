@@ -5,29 +5,45 @@
 
 /* --- 1. DESIGN TOKENS & CUSTOM PROPERTIES --- */
 :root {
-  /* Brand Color Palette */
-  --color-ivory: #F8F5F0;
-  --color-charcoal: #171614;
-  --color-charcoal-light: #201E1B;
-  --color-charcoal-card: #252320;
-  --color-champagne-gold: #B79A67;
-  --color-gold-light: #D4BF94;
-  --color-gold-dark: #8C7348;
-  --color-gold-glow: rgba(183, 154, 103, 0.25);
-  --color-warm-beige: #E8DFD2;
-  --color-warm-beige-light: #F2ECE1;
+  /* Brand Signature Color Palette from Official Logo */
+  --color-logo-violet: #9E58DB;
+  --color-logo-magenta: #C465A8;
+  --color-logo-coral: #EC8670;
+  --color-logo-coral-hover: #F29A86;
+  --color-logo-violet-dark: #7F39C2;
+  
+  /* Brand Gradients from Official Logo */
+  --gradient-brand: linear-gradient(135deg, #9E58DB 0%, #C465A8 50%, #EC8670 100%);
+  --gradient-brand-horizontal: linear-gradient(90deg, #9E58DB 0%, #C465A8 50%, #EC8670 100%);
+  --gradient-brand-subtle: linear-gradient(135deg, rgba(158, 88, 219, 0.14) 0%, rgba(236, 134, 112, 0.14) 100%);
+  --gradient-brand-card: linear-gradient(180deg, rgba(158, 88, 219, 0.08) 0%, rgba(236, 134, 112, 0.04) 100%);
+  
+  /* Accent Tokens (Mapped to Sunset Coral / Rose Magenta) */
+  --color-champagne-gold: #EC8670;
+  --color-gold-light: #F29A86;
+  --color-gold-dark: #C465A8;
+  --color-gold-glow: rgba(236, 134, 112, 0.35);
+  --color-violet-glow: rgba(158, 88, 219, 0.35);
+  
+  /* Harmonious Luxury Surfaces */
+  --color-ivory: #FAF8F6;
+  --color-charcoal: #151318;
+  --color-charcoal-light: #1E1A22;
+  --color-charcoal-card: #231F28;
+  --color-warm-beige: #EBE5E1;
+  --color-warm-beige-light: #F5EFEB;
   --color-white: #FFFFFF;
   
   /* Semantic Text Colors */
-  --color-text-primary: #1E1D1A;
-  --color-text-muted: #666259;
-  --color-text-light: #9E998E;
-  --color-text-on-dark: #F5F3EE;
-  --color-text-muted-on-dark: #B8B3A8;
+  --color-text-primary: #1C1920;
+  --color-text-muted: #6E6875;
+  --color-text-light: #9F99A7;
+  --color-text-on-dark: #F7F5F9;
+  --color-text-muted-on-dark: #BCB7C4;
   
   /* Borders & Dividers */
-  --border-subtle: 1px solid rgba(183, 154, 103, 0.22);
-  --border-subtle-light: 1px solid rgba(232, 223, 210, 0.85);
+  --border-subtle: 1px solid rgba(196, 101, 168, 0.28);
+  --border-subtle-light: 1px solid rgba(235, 229, 225, 0.9);
   --border-subtle-dark: 1px solid rgba(255, 255, 255, 0.08);
   
   /* Typography Families */
@@ -71,9 +87,9 @@
   
   /* Shadows */
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
-  --shadow-medium: 0 10px 35px rgba(23, 22, 20, 0.08);
-  --shadow-deep: 0 20px 50px rgba(0, 0, 0, 0.35);
-  --shadow-gold: 0 0 30px rgba(183, 154, 103, 0.28);
+  --shadow-medium: 0 10px 35px rgba(21, 19, 24, 0.08);
+  --shadow-deep: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --shadow-gold: 0 4px 25px rgba(158, 88, 219, 0.35);
 }
 
 /* --- 2. RESET & BASE STYLES --- */
@@ -128,7 +144,7 @@ ul, ol {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-champagne-gold);
+  outline: 2px solid var(--color-logo-magenta);
   outline-offset: 4px;
 }
 
@@ -172,22 +188,27 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .gold-accent {
-  color: var(--color-champagne-gold);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-logo-coral);
+  display: inline-block;
+  font-weight: 400;
 }
 
 .overline {
   font-family: var(--font-sans);
   font-size: var(--text-micro);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-champagne-gold);
+  color: var(--color-logo-coral);
   display: inline-block;
   margin-bottom: var(--space-xs);
 }
 
 .overline-dark {
-  color: var(--color-gold-dark);
+  color: var(--color-logo-magenta);
 }
 
 .lead-text {
@@ -252,11 +273,11 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .section-divider {
-  width: 50px;
-  height: 1px;
-  background-color: var(--color-champagne-gold);
+  width: 54px;
+  height: 2.5px;
+  background: var(--gradient-brand-horizontal);
   margin: var(--space-sm) auto var(--space-md);
-  opacity: 0.6;
+  border-radius: 2px;
 }
 
 .section-header-left .section-divider {
@@ -272,7 +293,7 @@ h1, h2, h3, h4, .font-serif {
   padding: 0.95rem 2.2rem;
   font-family: var(--font-sans);
   font-size: var(--text-micro);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   border-radius: var(--radius-xs);
@@ -283,16 +304,16 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .btn-primary {
-  background-color: var(--color-champagne-gold);
-  color: var(--color-charcoal);
-  border: 1px solid var(--color-champagne-gold);
+  background: var(--gradient-brand);
+  color: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 18px rgba(158, 88, 219, 0.25);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-gold-light);
-  border-color: var(--color-gold-light);
+  filter: brightness(1.1);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: 0 8px 28px rgba(236, 134, 112, 0.45);
 }
 
 .btn-secondary {
@@ -310,7 +331,7 @@ h1, h2, h3, h4, .font-serif {
 .btn-secondary-dark {
   background-color: transparent;
   color: var(--color-charcoal);
-  border: 1px solid rgba(23, 22, 20, 0.35);
+  border: 1px solid rgba(21, 19, 24, 0.35);
 }
 
 .btn-secondary-dark:hover {
@@ -322,15 +343,16 @@ h1, h2, h3, h4, .font-serif {
 
 .btn-outline-gold {
   background-color: transparent;
-  color: var(--color-champagne-gold);
-  border: 1px solid var(--color-champagne-gold);
+  color: var(--color-logo-coral);
+  border: 1.5px solid var(--color-logo-coral);
 }
 
 .btn-outline-gold:hover {
-  background-color: var(--color-champagne-gold);
-  color: var(--color-charcoal);
+  background: var(--gradient-brand);
+  color: #FFFFFF;
+  border-color: transparent;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: 0 6px 20px rgba(158, 88, 219, 0.35);
 }
 
 .link-editorial {
@@ -661,19 +683,19 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-champagne-gold);
+  width: 7px;
+  height: 7px;
+  background: var(--gradient-brand);
   border-radius: 50%;
-  box-shadow: 0 0 8px var(--color-champagne-gold);
+  box-shadow: 0 0 10px var(--color-logo-coral);
 }
 
 .hero-badge-text {
   font-size: var(--text-micro);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-gold-light);
+  color: var(--color-logo-coral);
 }
 
 .hero-title {
@@ -976,21 +998,21 @@ h1, h2, h3, h4, .font-serif {
   text-transform: uppercase;
   color: var(--color-text-muted);
   background-color: transparent;
-  border: 1px solid rgba(183, 154, 103, 0.25);
+  border: 1px solid rgba(196, 101, 168, 0.35);
   border-radius: var(--radius-pill);
   transition: all var(--transition-fast);
 }
 
 .filter-btn:hover {
   color: var(--color-charcoal);
-  border-color: var(--color-champagne-gold);
+  border-color: var(--color-logo-magenta);
 }
 
 .filter-btn.active {
-  background-color: var(--color-champagne-gold);
-  color: var(--color-charcoal);
-  border-color: var(--color-champagne-gold);
-  box-shadow: 0 4px 15px rgba(183, 154, 103, 0.25);
+  background: var(--gradient-brand);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 4px 18px rgba(158, 88, 219, 0.35);
 }
 
 /* Fluid Masonry Grid using CSS Columns */
@@ -1288,10 +1310,10 @@ h1, h2, h3, h4, .font-serif {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background-color: rgba(23, 22, 20, 0.8);
+  background-color: rgba(21, 19, 24, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--color-champagne-gold);
-  color: var(--color-champagne-gold);
+  border: 1.5px solid var(--color-logo-coral);
+  color: var(--color-logo-coral);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1307,21 +1329,22 @@ h1, h2, h3, h4, .font-serif {
   right: -8px;
   bottom: -8px;
   border-radius: 50%;
-  border: 1px solid var(--color-champagne-gold);
-  opacity: 0.4;
+  border: 1.5px solid var(--color-logo-magenta);
+  opacity: 0.5;
   animation: playPulse 2.5s infinite;
 }
 
 @keyframes playPulse {
-  0% { transform: scale(1); opacity: 0.5; }
+  0% { transform: scale(1); opacity: 0.6; }
   100% { transform: scale(1.35); opacity: 0; }
 }
 
 .film-play-btn:hover {
-  background-color: var(--color-champagne-gold);
-  color: var(--color-charcoal);
+  background: var(--gradient-brand);
+  color: #FFFFFF;
+  border-color: transparent;
   transform: scale(1.08);
-  box-shadow: var(--shadow-gold);
+  box-shadow: 0 8px 32px rgba(158, 88, 219, 0.45);
 }
 
 .film-play-btn svg {
@@ -1723,7 +1746,7 @@ h1, h2, h3, h4, .font-serif {
 
 .form-select {
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23B79A67'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23EC8670'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1.2rem;
