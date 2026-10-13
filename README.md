@@ -23,7 +23,7 @@ miracleweddingsphotography/
 │   ├── images/             # Web-optimized high-resolution authentic photography (Max 2200px)
 │   ├── thumbnails/         # High-performance grid thumbnails (Max 800px)
 │   ├── videos/             # 1080p MP4 Cinematic Showreel teaser (`showreel.mp4`)
-│   └── logos/              # Razor-sharp vector SVGs (`logo-light.svg`, `logo-dark.svg`, `favicon.svg`)
+│   └── logos/              # Official client provided brand logo (`logo.jpg`)
 ├── source-images/          # Original untouched 60MP Sony Alpha RAW camera exports
 └── README.md               # Documentation, Local Launch & Deployment Guide
 ```
