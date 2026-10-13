@@ -2198,6 +2198,196 @@ section[id],
   padding: 0.5rem;
 }
 
+/* --- LUXURY FROSTED GLASS CUSTOM DROPDOWNS --- */
+.custom-select-native {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.88rem 1.25rem;
+  background-color: rgba(14, 11, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: var(--font-sf);
+  font-size: 0.94rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.custom-select-trigger:hover {
+  background-color: rgba(22, 17, 28, 0.88);
+  border-color: rgba(158, 88, 219, 0.45);
+}
+
+.custom-select-wrapper.is-open .custom-select-trigger,
+.custom-select-trigger:focus {
+  border-color: rgba(158, 88, 219, 0.8);
+  background-color: rgba(18, 14, 25, 0.95);
+  box-shadow: 0 0 0 3px rgba(158, 88, 219, 0.2), 0 8px 24px rgba(0, 0, 0, 0.35);
+  outline: none;
+}
+
+.custom-select-trigger.invalid {
+  border-color: #FF5A5A !important;
+  box-shadow: 0 0 0 3px rgba(255, 90, 90, 0.18) !important;
+}
+
+.custom-select-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.custom-select-label.is-placeholder {
+  color: rgba(255, 255, 255, 0.36);
+}
+
+.custom-select-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-coral);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.custom-select-wrapper.is-open .custom-select-chevron {
+  transform: rotate(180deg);
+  color: var(--color-gold-light);
+}
+
+/* Luxury Frosted Glass Popover Menu */
+.custom-select-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: rgba(20, 15, 28, 0.96);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(158, 88, 219, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(158, 88, 219, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  z-index: 1200;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+  pointer-events: none;
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(158, 88, 219, 0.3) transparent;
+}
+
+.custom-select-wrapper.is-open .custom-select-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.custom-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-sf);
+  font-size: 0.92rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.custom-select-option:hover {
+  background: rgba(158, 88, 219, 0.18);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.custom-select-option.is-selected {
+  background: linear-gradient(135deg, rgba(158, 88, 219, 0.25) 0%, rgba(236, 134, 112, 0.18) 100%);
+  color: #ffffff;
+  font-weight: 500;
+  border: 1px solid rgba(158, 88, 219, 0.3);
+}
+
+.custom-select-option.is-placeholder {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.86rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0;
+  margin-bottom: 0.3rem;
+  padding-bottom: 0.65rem;
+}
+
+.custom-select-option.is-placeholder:hover {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  transform: none;
+}
+
+.option-text {
+  flex: 1;
+}
+
+.option-pill-badge {
+  font-family: var(--font-sf);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-coral);
+  background: rgba(236, 134, 112, 0.15);
+  border: 1px solid rgba(236, 134, 112, 0.35);
+  border-radius: 9999px;
+  padding: 0.18rem 0.6rem;
+  white-space: nowrap;
+}
+
+.option-checkmark {
+  display: none;
+  color: var(--color-coral);
+  flex-shrink: 0;
+}
+
+.custom-select-option.is-selected .option-checkmark {
+  display: flex;
+}
+
 .form-textarea {
   resize: vertical;
   min-height: 110px;

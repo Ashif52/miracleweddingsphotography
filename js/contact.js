@@ -25,6 +25,7 @@ class MiracleContact {
       dateInput.setAttribute('min', today);
     }
 
+    this.initCustomSelects();
     this.bindFormEvents();
     this.bindModalEvents();
   }
@@ -129,7 +130,12 @@ class MiracleContact {
       // Focus first error field
       const firstInvalid = this.form.querySelector('.invalid');
       if (firstInvalid) {
-        firstInvalid.focus();
+        if (firstInvalid.classList.contains('custom-select-native')) {
+          const trig = firstInvalid.closest('.form-group')?.querySelector('.custom-select-trigger');
+          if (trig) trig.focus();
+        } else {
+          firstInvalid.focus();
+        }
       }
     }
 
@@ -141,6 +147,8 @@ class MiracleContact {
     input.classList.add('invalid');
     const group = input.closest('.form-group');
     if (group) {
+      const trigger = group.querySelector('.custom-select-trigger');
+      if (trigger) trigger.classList.add('invalid');
       let errorEl = group.querySelector('.form-error-msg');
       if (errorEl) {
         errorEl.textContent = message;
@@ -154,6 +162,8 @@ class MiracleContact {
     input.classList.remove('invalid');
     const group = input.closest('.form-group');
     if (group) {
+      const trigger = group.querySelector('.custom-select-trigger');
+      if (trigger) trigger.classList.remove('invalid');
       const errorEl = group.querySelector('.form-error-msg');
       if (errorEl) {
         errorEl.textContent = '';
@@ -220,7 +230,186 @@ class MiracleContact {
 
       this.openModal();
       this.form.reset();
+      this.resetCustomSelects();
     }, 700);
+  }
+
+  initCustomSelects() {
+    const nativeSelects = this.form.querySelectorAll('select.form-select');
+    nativeSelects.forEach(select => {
+      // Create wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'custom-select-wrapper';
+      wrapper.setAttribute('data-select-id', select.id);
+
+      // Trigger button
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'custom-select-trigger form-input';
+      trigger.setAttribute('aria-haspopup', 'listbox');
+      trigger.setAttribute('aria-expanded', 'false');
+
+      const selectedOption = select.options[select.selectedIndex] || select.options[0];
+      const initialText = selectedOption ? selectedOption.text : 'Select Option';
+      const isPlaceholder = !select.value;
+
+      trigger.innerHTML = `
+        <span class="custom-select-label ${isPlaceholder ? 'is-placeholder' : ''}">${this.escapeHtml(initialText)}</span>
+        <span class="custom-select-chevron" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      `;
+
+      // Menu container
+      const menu = document.createElement('div');
+      menu.className = 'custom-select-menu';
+      menu.setAttribute('role', 'listbox');
+
+      Array.from(select.options).forEach(opt => {
+        const optionEl = document.createElement('div');
+        optionEl.className = 'custom-select-option';
+        optionEl.setAttribute('role', 'option');
+        optionEl.setAttribute('data-value', opt.value);
+        if (opt.value === select.value) {
+          optionEl.classList.add('is-selected');
+        }
+        if (!opt.value) {
+          optionEl.classList.add('is-placeholder');
+        }
+
+        let optionText = opt.text;
+        let badgeHtml = '';
+        if (optionText.includes('(Recommended)')) {
+          optionText = optionText.replace('(Recommended)', '').trim();
+          badgeHtml = '<span class="option-pill-badge">Recommended</span>';
+        }
+
+        optionEl.innerHTML = `
+          <span class="option-text">${this.escapeHtml(optionText)}</span>
+          ${badgeHtml}
+          <span class="option-checkmark" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+        `;
+
+        optionEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          select.value = opt.value;
+          
+          // Update trigger label
+          const labelEl = trigger.querySelector('.custom-select-label');
+          if (labelEl) {
+            labelEl.textContent = opt.text;
+            labelEl.classList.toggle('is-placeholder', !opt.value);
+          }
+
+          // Update active option styling
+          menu.querySelectorAll('.custom-select-option').forEach(o => o.classList.remove('is-selected'));
+          optionEl.classList.add('is-selected');
+
+          // Close dropdown
+          closeDropdown();
+
+          // Dispatch change event to validate & clear any error
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+          select.dispatchEvent(new Event('input', { bubbles: true }));
+          trigger.classList.remove('invalid');
+        });
+
+        menu.appendChild(optionEl);
+      });
+
+      const openDropdown = () => {
+        // Close all other dropdowns first
+        document.querySelectorAll('.custom-select-wrapper.is-open').forEach(w => {
+          if (w !== wrapper) {
+            w.classList.remove('is-open');
+            const otherTrig = w.querySelector('.custom-select-trigger');
+            if (otherTrig) otherTrig.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        wrapper.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      };
+
+      const closeDropdown = () => {
+        wrapper.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      };
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (wrapper.classList.contains('is-open')) {
+          closeDropdown();
+        } else {
+          openDropdown();
+        }
+      });
+
+      // Insert wrapper and hide native select visually
+      select.classList.add('custom-select-native');
+      select.parentNode.insertBefore(wrapper, select.nextSibling);
+      wrapper.appendChild(trigger);
+      wrapper.appendChild(menu);
+      wrapper.appendChild(select);
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.custom-select-wrapper')) {
+        document.querySelectorAll('.custom-select-wrapper.is-open').forEach(w => {
+          w.classList.remove('is-open');
+          const t = w.querySelector('.custom-select-trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.custom-select-wrapper.is-open').forEach(w => {
+          w.classList.remove('is-open');
+          const t = w.querySelector('.custom-select-trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
+
+  resetCustomSelects() {
+    this.form.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
+      const select = wrapper.querySelector('select');
+      const trigger = wrapper.querySelector('.custom-select-trigger');
+      const labelEl = trigger ? trigger.querySelector('.custom-select-label') : null;
+      const menu = wrapper.querySelector('.custom-select-menu');
+      if (select && labelEl) {
+        const firstOpt = select.options[0];
+        labelEl.textContent = firstOpt ? firstOpt.text : 'Select Option';
+        labelEl.classList.add('is-placeholder');
+      }
+      if (menu) {
+        menu.querySelectorAll('.custom-select-option').forEach(o => o.classList.remove('is-selected'));
+      }
+      if (trigger) trigger.classList.remove('invalid');
+      wrapper.classList.remove('is-open');
+    });
+  }
+
+  escapeHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   }
 
   openModal() {
