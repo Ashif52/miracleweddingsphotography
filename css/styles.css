@@ -3,6 +3,18 @@
    Crafted with Vanilla CSS3, Modern Grid/Flexbox, Fluid Typography
    ========================================================================== */
 
+/* --- APPLE SAN FRANCISCO LINING NUMERALS OVERLAY ---
+   Ensures digits (0-9) and math/data symbols (+, %, /, -, –, :, &)
+   seamlessly render in Apple's San Francisco (SF Pro) / Inter across all typography contexts. */
+@font-face {
+  font-family: 'SF-Pro-Numbers';
+  src: local('SF Pro Display'), local('SF Pro Text'), local('SF Pro'),
+       local('.SF UI Display'), local('.SF UI Text'), local('.SF NS Display'),
+       local('Inter'), local('Segoe UI'), local('Helvetica Neue'), local('Arial');
+  unicode-range: U+0030-0039, U+002B, U+0025, U+002F, U+002D, U+2013, U+2014, U+003A;
+  font-weight: 300 800;
+}
+
 /* --- 1. DESIGN TOKENS & CUSTOM PROPERTIES --- */
 :root {
   /* Brand Signature Color Palette from Official Logo */
@@ -47,7 +59,7 @@
   --border-subtle-dark: 1px solid rgba(196, 101, 168, 0.16);
   
   /* Typography Families — Powered by Apple's San Francisco (SF Pro) */
-  --font-serif: 'Cormorant Garamond', Garamond, 'Playfair Display', Georgia, serif;
+  --font-serif: 'SF-Pro-Numbers', 'Cormorant Garamond', Garamond, 'Playfair Display', Georgia, serif;
   --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", "Inter", -system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-sans: var(--font-sf);
   
@@ -208,6 +220,7 @@ h1, h2, h3, h4, .font-serif {
 
 .overline {
   font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums lining-nums;
   font-size: var(--text-micro);
   font-weight: 600;
   letter-spacing: 0.22em;
@@ -731,6 +744,15 @@ section[id],
   justify-content: space-between;
 }
 
+.mobile-nav-link span:last-child {
+  font-family: var(--font-sf) !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums lining-nums;
+  opacity: 0.55;
+}
+
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
   color: var(--color-logo-violet-dark);
@@ -964,10 +986,11 @@ section[id],
 }
 
 .hero-indicator-item .indicator-number {
-  font-family: var(--font-sans);
+  font-family: var(--font-sf) !important;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .hero-indicator-item .indicator-bar {
@@ -1024,9 +1047,11 @@ section[id],
 }
 
 .hero-caption-index {
+  font-family: var(--font-sf) !important;
   color: var(--color-logo-coral);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .hero-caption-title {
@@ -1185,14 +1210,16 @@ section[id],
 }
 
 .metric-number {
-  font-family: var(--font-serif);
-  font-size: 2.1rem;
-  font-weight: 600;
+  font-family: var(--font-sf) !important;
+  font-size: clamp(2.15rem, 2.9vw, 2.5rem);
+  font-weight: 700;
   line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums lining-nums;
   background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
 }
 
 .metric-label {
@@ -1691,10 +1718,13 @@ section[id],
 }
 
 .lightbox-counter {
+  font-family: var(--font-sf) !important;
   font-size: var(--text-micro);
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold-light);
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .lightbox-controls {
@@ -2006,9 +2036,12 @@ section[id],
 }
 
 .cine-still-num {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-sf) !important;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .cine-still-title {
@@ -2044,8 +2077,11 @@ section[id],
 }
 
 .film-feature-card .feature-num {
-  font-family: var(--font-serif);
+  font-family: var(--font-sf) !important;
   font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums lining-nums;
   color: var(--color-champagne-gold);
   margin-bottom: 0.4rem;
 }
@@ -2118,10 +2154,13 @@ section[id],
 }
 
 .visual-approach-number {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-family: var(--font-sf) !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums lining-nums;
   color: var(--color-logo-coral);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
 .visual-approach-title {
@@ -2157,9 +2196,11 @@ section[id],
 }
 
 .approach-num {
-  font-family: var(--font-serif);
+  font-family: var(--font-sf) !important;
   font-size: 2.2rem;
-  font-weight: 300;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums lining-nums;
   color: var(--color-champagne-gold);
   margin-bottom: 1rem;
 }
@@ -2516,9 +2557,10 @@ section[id],
 }
 
 .sf-slots-tag {
-  font-family: var(--font-sf);
+  font-family: var(--font-sf) !important;
   font-size: 0.78rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
   color: #B5523E;
 }
 
@@ -2989,15 +3031,31 @@ section[id],
 }
 
 .modal-ref-badge {
+  font-family: var(--font-sf) !important;
+  font-variant-numeric: tabular-nums lining-nums;
   background-color: rgba(183, 154, 103, 0.12);
   border: var(--border-subtle);
   padding: 0.6rem 1.2rem;
   border-radius: var(--radius-pill);
   font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
   color: var(--color-gold-light);
   display: inline-block;
   margin-bottom: 2rem;
+}
+
+/* --- APPLE SAN FRANCISCO NUMBER & METRICS SYSTEM --- */
+.sf-number,
+.font-sf-num,
+.numeric-data,
+.stat-number,
+.phone-number,
+a[href^="tel:"],
+[data-number] {
+  font-family: var(--font-sf) !important;
+  font-variant-numeric: tabular-nums lining-nums !important;
+  font-feature-settings: "tnum" 1, "lnum" 1 !important;
 }
 
 .modal-actions {
@@ -3162,6 +3220,8 @@ section[id],
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  font-family: var(--font-sf);
+  font-variant-numeric: tabular-nums lining-nums;
   font-size: var(--text-micro);
   color: var(--color-text-light);
 }
@@ -3169,10 +3229,10 @@ section[id],
 /* Back to Top Button */
 .back-to-top-btn {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 48px;
-  height: 48px;
+  bottom: 5.6rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background-color: var(--color-charcoal-card);
   border: 1px solid var(--color-champagne-gold);
@@ -3186,6 +3246,7 @@ section[id],
   visibility: hidden;
   transform: translateY(10px);
   transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .back-to-top-btn.visible {
@@ -3198,6 +3259,180 @@ section[id],
   background-color: var(--color-champagne-gold);
   color: var(--color-charcoal);
   box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+/* --- LUXURY FLOATING WHATSAPP CTA --- */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 995;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #FFFFFF !important;
+  padding: 0.62rem 1.15rem 0.62rem 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.38), 0 2px 8px rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  font-family: var(--font-sf);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-whatsapp-btn:hover {
+  color: #FFFFFF !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.52), 0 4px 12px rgba(0, 0, 0, 0.18);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.floating-whatsapp-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.whatsapp-icon-bubble {
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.whatsapp-icon-bubble svg {
+  width: 18px;
+  height: 18px;
+  fill: #FFFFFF;
+}
+
+.whatsapp-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: whatsappPulse 2.4s infinite ease-out;
+}
+
+@keyframes whatsappPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  65% {
+    transform: scale(1.25);
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-label {
+  font-family: var(--font-sf);
+  font-size: 0.84rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Hero Section WhatsApp CTA Button */
+.btn-hero-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(37, 211, 102, 0.14);
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(37, 211, 102, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.95rem 1.6rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sf);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.btn-hero-whatsapp svg {
+  color: #25D366;
+  transition: transform var(--transition-fast);
+}
+
+.btn-hero-whatsapp:hover {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  border-color: #25D366;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+}
+
+.btn-hero-whatsapp:hover svg {
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+
+/* Mobile Drawer WhatsApp CTA */
+.btn-whatsapp-drawer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #FFFFFF !important;
+  padding: 0.82rem 1.25rem;
+  border-radius: 12px;
+  font-family: var(--font-sf);
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.3);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  width: 100%;
+}
+
+.btn-whatsapp-drawer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.45);
+  color: #FFFFFF !important;
+}
+
+.btn-whatsapp-drawer svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 540px) {
+  .floating-whatsapp-btn {
+    bottom: 1.15rem;
+    right: 1.15rem;
+    padding: 0.58rem 1rem 0.58rem 0.65rem;
+    font-size: 0.82rem;
+  }
+  
+  .back-to-top-btn {
+    bottom: 4.85rem;
+    right: 1.15rem;
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* --- 17. SUB-PAGE HERO & UNIQUE LAYOUTS --- */
