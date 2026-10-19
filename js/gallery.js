@@ -22,8 +22,8 @@ const PORTFOLIO_ASSETS = [
   {
     id: 'golden-silk-embrace',
     title: 'Intimacy in Kanchipuram Gold',
-    category: 'bridal',
-    categoryLabel: 'Bridal Portrait',
+    category: 'weddings',
+    categoryLabel: 'Traditional Wedding',
     image: 'assets/images/dsc00775_copy.jpg',
     thumb: 'assets/thumbnails/dsc00775_copy.jpg',
     description: 'South Indian bride in hand-woven copper-gold Kanchipuram silk gently holding her groom’s cheek under the warm glow of an illuminated floral arch.',
@@ -94,8 +94,8 @@ const PORTFOLIO_ASSETS = [
   {
     id: 'moonlit-chandelier-silhouette',
     title: 'Fine Art Moonlit Silhouette',
-    category: 'cinematic',
-    categoryLabel: 'Cinematic Film',
+    category: 'receptions',
+    categoryLabel: 'Grand Reception',
     image: 'assets/images/dsc02153_copy.jpg',
     thumb: 'assets/thumbnails/dsc02153_copy.jpg',
     description: 'An evocative cinematic silhouette set against an illuminated lunar disc beneath an opulent crystal chandelier and candlelit stage.',
@@ -178,8 +178,8 @@ const PORTFOLIO_ASSETS = [
   {
     id: 'monochrome-silhouette',
     title: 'Profile in Sacred Monochrome',
-    category: 'cinematic',
-    categoryLabel: 'Fine Art Silhouette',
+    category: 'bridal',
+    categoryLabel: 'Bridal Portrait',
     image: 'assets/images/dsc03955_copy.jpg',
     thumb: 'assets/thumbnails/dsc03955_copy.jpg',
     description: 'Timeless black-and-white rim-lit profile portrait showcasing intricate traditional temple hair ornaments and quiet devotion.',
@@ -192,8 +192,14 @@ const PORTFOLIO_ASSETS = [
 // --- 2. GALLERY CONTROLLER & LIGHTBOX ---
 class MiracleGallery {
   constructor() {
-    this.currentCategory = 'all';
-    this.filteredAssets = [...PORTFOLIO_ASSETS];
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const initialCategory = activeBtn ? activeBtn.getAttribute('data-filter') : 'weddings';
+    this.currentCategory = initialCategory;
+    if (initialCategory === 'all') {
+      this.filteredAssets = [...PORTFOLIO_ASSETS];
+    } else {
+      this.filteredAssets = PORTFOLIO_ASSETS.filter(item => item.category === initialCategory);
+    }
     this.currentLightboxIndex = 0;
     
     // DOM Elements
@@ -237,11 +243,14 @@ class MiracleGallery {
              width="${item.orientation === 'portrait' ? '640' : '800'}" 
              height="${item.orientation === 'portrait' ? '800' : '533'}">
         <div class="masonry-overlay">
-          <span class="masonry-category">${item.categoryLabel}</span>
-          <h3 class="masonry-title">${item.title}</h3>
+          <div class="masonry-glass-badge">
+            <span class="masonry-category">${item.categoryLabel}</span>
+            <h3 class="masonry-title">${item.title}</h3>
+            ${item.couple ? `<span class="masonry-meta">${item.couple}${item.location ? ` · ${item.location}` : ''}</span>` : ''}
+          </div>
         </div>
         <div class="masonry-zoom-icon" aria-label="View photo">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="15 3 21 3 21 9"></polyline>
             <polyline points="9 21 3 21 3 15"></polyline>
             <line x1="21" y1="3" x2="14" y2="10"></line>
