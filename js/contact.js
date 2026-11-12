@@ -112,20 +112,6 @@ class MiracleContact {
       isValid = false;
     }
 
-    // 6. Event Type
-    const eventField = document.getElementById('event-type');
-    if (!eventField || !eventField.value) {
-      this.setFieldError(eventField, 'Please select your event celebration type.');
-      isValid = false;
-    }
-
-    // 7. Services
-    const serviceField = document.getElementById('required-services');
-    if (!serviceField || !serviceField.value) {
-      this.setFieldError(serviceField, 'Please select your primary requested service.');
-      isValid = false;
-    }
-
     if (!isValid) {
       // Focus first error field
       const firstInvalid = this.form.querySelector('.invalid');
@@ -191,8 +177,10 @@ class MiracleContact {
     const name = document.getElementById('client-name').value.trim();
     const date = document.getElementById('wedding-date').value.trim();
     const location = document.getElementById('wedding-location').value.trim();
-    const eventType = document.getElementById('event-type').value;
-    const services = document.getElementById('required-services').value;
+    const eventTypeEl = document.getElementById('event-type');
+    const eventType = eventTypeEl ? eventTypeEl.value : '';
+    const servicesEl = document.getElementById('required-services');
+    const services = servicesEl ? servicesEl.value : '';
     const notes = document.getElementById('client-message') ? document.getElementById('client-message').value.trim() : '';
 
     // Generate unique inquiry ref ID
@@ -200,17 +188,21 @@ class MiracleContact {
     const refCode = `MW-2026-${randomCode}`;
 
     // Prepare WhatsApp message
-    const waText = encodeURIComponent(
-      `Hello Miracle Weddings Photography!\n\n` +
-      `I have just submitted a wedding inquiry via your website (Ref: ${refCode}).\n` +
-      `• Name: ${name}\n` +
-      `• Date: ${date}\n` +
-      `• City/Venue: ${location}\n` +
-      `• Event: ${eventType}\n` +
-      `• Services: ${services}\n` +
-      (notes ? `• Note: ${notes}\n` : '') +
-      `\nCould you please check availability for our wedding? Thank you!`
-    );
+    const waLines = [
+      `Hello Miracle Weddings Photography!`,
+      ``,
+      `I have just submitted a wedding inquiry via your website (Ref: ${refCode}).`,
+      `• Name: ${name}`,
+      `• Date: ${date}`,
+      `• City/Venue: ${location}`
+    ];
+    if (eventType) waLines.push(`• Event: ${eventType}`);
+    if (services) waLines.push(`• Services: ${services}`);
+    if (notes) waLines.push(`• Note: ${notes}`);
+    waLines.push(``);
+    waLines.push(`Could you please check availability for our wedding? Thank you!`);
+
+    const waText = encodeURIComponent(waLines.join('\n'));
 
     const waUrl = `https://wa.me/919025052520?text=${waText}`;
 

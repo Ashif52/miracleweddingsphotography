@@ -126,18 +126,36 @@
           </p>
 
           <div class="contact-capsules-stack">
-            <!-- Studio Address Capsule -->
-            <div class="sf-contact-card">
-              <div class="sf-icon-bubble">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
+            <!-- Studio Address & Interactive Google Map Capsule -->
+            <div class="sf-location-map-card">
+              <div class="sf-location-header-card">
+                <div class="sf-icon-bubble">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="sf-card-body">
+                  <span class="sf-card-label">Studio Location</span>
+                  <p class="sf-card-val">Kodambakkam, Chennai, Tamil Nadu — 600024</p>
+                  <span class="sf-tag-pill">Visits by Prior Appointment</span>
+                </div>
+                <a href="https://maps.google.com/?q=Kodambakkam,+Chennai,+Tamil+Nadu+600024" target="_blank" rel="noopener noreferrer" class="sf-card-action sf-map-action-btn" aria-label="Open directions to Kodambakkam studio in Google Maps">
+                  <span class="sf-tap-cue">Directions</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
               </div>
-              <div class="sf-card-body">
-                <span class="sf-card-label">Studio Location</span>
-                <p class="sf-card-val">Kodambakkam, Chennai, Tamil Nadu — 600024</p>
-                <span class="sf-tag-pill">Visits by Prior Appointment</span>
+              <div class="sf-map-embed-wrapper">
+                <iframe 
+                  title="Google Map showing Miracle Weddings Photography Studio in Kodambakkam Chennai" 
+                  src="https://maps.google.com/maps?q=Kodambakkam%2C+Chennai%2C+Tamil+Nadu+600024&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" 
+                  height="210" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
               </div>
             </div>
 
@@ -250,7 +268,7 @@
 
               <div class="form-group">
                 <label for="wedding-date" class="form-label">
-                  <span>Wedding Date</span>
+                  <span>Event Date</span>
                   <span class="req-star">*</span>
                 </label>
                 <div class="input-shell">
@@ -260,57 +278,20 @@
               </div>
             </div>
 
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="wedding-location" class="form-label">
-                  <span>Wedding City / Venue</span>
-                  <span class="req-star">*</span>
-                </label>
-                <div class="input-shell">
-                  <input type="text" id="wedding-location" class="form-input" placeholder="e.g. Chennai / Mahabalipuram / Bangalore" required>
-                </div>
-                <div class="form-error-msg"></div>
-              </div>
-
-              <div class="form-group">
-                <label for="event-type" class="form-label">
-                  <span>Celebration Type</span>
-                  <span class="req-star">*</span>
-                </label>
-                <div class="input-shell select-shell">
-                  <select id="event-type" class="form-select" required>
-                    <option value="">Select Celebration</option>
-                    <option value="South Indian Traditional Wedding">South Indian Traditional Wedding</option>
-                    <option value="Christian / Church Wedding">Christian / Church Wedding</option>
-                    <option value="Destination Wedding">Destination Wedding</option>
-                    <option value="Pre-Wedding Couple Shoot">Pre-Wedding Shoot Only</option>
-                    <option value="Reception & Sangeet">Reception &amp; Sangeet</option>
-                  </select>
-                </div>
-                <div class="form-error-msg"></div>
-              </div>
-            </div>
-
             <div class="form-group">
-              <label for="required-services" class="form-label">
-                <span>Required Coverage</span>
+              <label for="wedding-location" class="form-label">
+                <span>City / Venue</span>
                 <span class="req-star">*</span>
               </label>
-              <div class="input-shell select-shell">
-                <select id="required-services" class="form-select" required>
-                  <option value="">Select Service Tier</option>
-                  <option value="Complete Photo & Cinema Package">Complete Photo &amp; Cinema (Recommended)</option>
-                  <option value="Candid & Traditional Photography Only">Photography Only</option>
-                  <option value="Cinematic Wedding Films Only">Cinematic Films Only</option>
-                  <option value="Pre-Wedding + 2-Day Wedding Coverage">Multi-Day Comprehensive Coverage</option>
-                </select>
+              <div class="input-shell">
+                <input type="text" id="wedding-location" class="form-input" placeholder="e.g. Chennai / Mahabalipuram / Bangalore" required>
               </div>
               <div class="form-error-msg"></div>
             </div>
 
             <div class="form-group">
               <label for="client-message" class="form-label">
-                <span>Wedding Details &amp; Special Requests</span>
+                <span>Event Details &amp; Special Requests</span>
                 <span class="optional-tag">Optional</span>
               </label>
               <div class="input-shell">
@@ -350,7 +331,7 @@
       <h3 class="modal-title">Inquiry Received</h3>
       <div class="modal-ref-badge" id="modal-ref-code">INQUIRY REF: MW-2026-9042</div>
       <p class="modal-desc">
-        Thank you for trusting Miracle Weddings Photography with your celebration. Our creative director has received your wedding inquiry and will check calendar availability for your date.
+        Thank you for trusting Miracle Weddings Photography with your celebration. Our creative director has received your event inquiry and will check calendar availability for your date.
       </p>
       <div class="modal-actions">
         <a href="#" id="modal-whatsapp-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background-color: #25D366; border-color: #25D366; color: #fff;">
